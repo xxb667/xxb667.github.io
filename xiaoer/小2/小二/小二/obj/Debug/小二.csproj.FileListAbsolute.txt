@@ -1,0 +1,3 @@
+C:\Users\18393\Desktop\小二\小二\obj\Debug\小二.csprojAssemblyReference.cache
+C:\Users\18393\Desktop\小二\小二\obj\Debug\小二.dll.licenses
+C:\Users\18393\Desktop\小二\小二\obj\Debug\小二.csproj.CoreCompileInputs.cache
