@@ -1,0 +1,418 @@
+/* 头部区域 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+body {
+    background-color: #f3f5f7;
+}
+
+.w {
+    width: 1200px;
+    margin: auto;
+}
+
+.header {
+    height: 42px;
+    margin: 30px auto;
+}
+
+.logo {
+    width: 100px;
+    height: 20px;
+    float: left;
+}
+.logo>img{
+    width: 100%;
+}
+.nav {
+    float: left;
+    margin-left: 5px;
+}
+
+.nav ul li {
+    float: left;
+    margin: 0 15px;
+    
+}
+.nav ul li:hover {
+    
+    overflow: hidden;
+    background-color: rgb(241, 238, 21);
+}
+
+.nav ul li a {
+    display: block;
+    height: 42px;
+    padding: 0 10px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #050505;
+}
+.nav ul li a:hover {
+
+    color: #ac1717;
+}
+
+.nav ul li ul li{
+    float: none;
+    width: 170px;
+    background-color: #EEEEEE;
+    margin: 0;
+}
+.nav ul li ul{
+    display: none;
+    border: 1px solid #ccc;
+    position: absolute;
+}
+.nav ul li:hover ul {
+	display:block;
+}
+.nav ul li ul li a:hover {
+	background:rgb(238, 106, 124);
+	color:#fff;
+}
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+
+.search {
+    width: 365px;
+    height: 42px;
+    float: left;
+    margin-left: 50px;
+}
+
+.search input {
+    width: 285px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: none;
+    color: #bfbfbf;
+    font-size: 14px;
+    padding-left: 15px;
+    float: left;
+}
+
+.search button {
+    width: 50px;
+    height: 42px;
+    background-image: url(../img/btn.png);
+    border: none;
+    float: left;
+}
+
+.user {
+    float: left;
+    line-height: 42px;
+    margin-left: 30px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.user  a{
+    display: block;
+    height: 42px;
+    padding: 0 10px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #050505;
+}
+
+/* banner区域 */
+
+.banner {
+    height: 421px;
+    background-color: #d31010;
+}
+
+.banner .w {
+    height: 421px;
+    background: url(../img/banner.jpeg) no-repeat top center;
+    /* background: url(../images/banner2.png) no-repeat top center; */
+}
+
+.subnav {
+    float: left;
+    width: 190px;
+    height: 421px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.subnav ul li {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+.subnav ul li a {
+    font-size: 14px;
+    color: #fff;
+}
+.subnav ul li a:hover {
+   
+    color: rgb(230, 50, 50);
+}
+
+
+.subnav ul li a span {
+    float: right;
+}
+
+.subnav ul li a:hover {
+    color: #00a4ff;
+}
+
+.course {
+    float: right;
+    width: 230px;
+    height: 300px;
+    background-color: #fff;
+    margin-top: 60px;
+}
+
+.course h2 {
+    height: 48px;
+    background-color: #9bceea;
+    font-size: 18px;
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+}
+
+.course .bd {
+    padding: 0 20px;
+}
+
+.course .bd ul li {
+    padding: 14px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.course .bd ul li h4 {
+    font-size: 16px;
+    color: #4e4e4e;
+}
+
+.course .bd ul li p {
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.course .bd>a {
+    margin-top: 5px;
+    display: block;
+    height: 38px;
+    border: 1px solid #00a4ff;
+    text-align: center;
+    line-height: 38px;
+    color: #00a4ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* 精品推荐模块 */
+
+.goods {
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0 2px 3px 3px rgba(0, 0, 0, .1);
+    margin-top: 10px;
+    line-height: 60px;
+}
+
+.goods h3 {
+    float: left;
+    margin-left: 30px;
+    font-size: 16px;
+    color: #00a4ff;
+}
+
+.goods ul {
+    float: left;
+    margin-left: 30px;
+}
+
+.goods ul li {
+    float: left;
+}
+
+.goods>a {
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #00a4ff;
+}
+
+.goods ul li a {
+    padding: 0 30px;
+    font-size: 16px;
+    color: #050505;
+    border-left: 1px solid #ccc;
+}
+.goods ul li a:hover {
+   
+    color: #ca1e1e;
+} 
+.box {
+    margin-top: 30px;
+}
+
+.box-hd {
+    height: 45px;
+}
+
+.box-hd h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+}
+
+.box-hd a {
+    float: right;
+    font-size: 12px;
+    color: #a5a5a5;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+.box-bd ul {
+    width: 1225px;
+}
+
+.box-bd ul li {
+    position: relative;
+    float: left;
+    width: 315px;
+    /* width: 228px; */
+    height: 270px;
+    background-color: #fff;
+    margin-left: 30px;
+    margin-right: 35px;
+    /* margin-right: 15px; */
+    margin-bottom: 30px;
+}
+
+.box-bd ul li>img {
+    width: 100%;
+    height:200px;
+}
+
+.box-bd ul li em {
+    position: absolute;
+    top: 4px;
+    right: -4px;
+}
+
+.box-bd ul li h4 {
+    margin: 15px 20px 8px 90px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #050505;
+}
+.box-bd ul li h4 a:hover{
+   
+    color: #d61d1d;
+}
+
+.box-bd .info {
+    margin: 0 30px 0 75px;
+    font-size: 12px;
+    color: #999;
+}
+
+.box-bd .info span {
+    color: #ff7c2d;
+}
+
+/* 底部 */
+.footer {
+    margin-top: 100px;
+    height: 115px;
+    background-color: #fff;
+}
+
+.footer>.w {
+    padding-top: 35px;
+}
+
+/* .footer .w .copyright {
+    float: left;
+} */
+
+.footer .w .links {
+    float: left;
+    /* width: 1280px;
+    height: 300px; */
+}
+
+/* .copyright p {
+    font-size: 12px;
+    color: #666;
+    margin: 20px 0 15px 0;
+} */
+
+/* .footer .w .copyright>a {
+    display: block;
+    width: 118px;
+    height: 33px;
+    border: 1px solid #00a4ff;
+    text-align: center;
+    color: #00a4ff;
+    font-size: 16px;
+} */
+
+.links dl {
+    float: left;
+    width: 880px;
+    height: 60px;
+    margin-left: 100px;
+}
+
+.links dl dt {
+    float: left;
+    font-size: 16px;
+    color: #333;
+    margin-right: 100px;
+    margin-bottom: 5px;
+}
+.links dl dt:hover {
+   
+    color: rgb(228, 36, 36);
+   
+}
+
+.links dl dd a {
+    float: left;
+    margin-right: 50px;
+    font-size: 14px;
+    color: #333;
+}
+.links dl dd a:hover{
+    color: rgb(228, 36, 36);
+}
