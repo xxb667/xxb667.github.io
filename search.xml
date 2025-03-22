@@ -8,7 +8,7 @@
       <link href="/2025/03/22/hello/"/>
       <url>/2025/03/22/hello/</url>
       
-        <content type="html"><![CDATA[<h1 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h1><p>你好啊朋友们</p><p>哈哈哈哈哈</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">he</span>():</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">he()</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h1><p>你好啊朋友们</p><p>哈哈哈哈哈</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def he():</span><br><span class="line">print(&#x27;hello&#x27;)</span><br><span class="line">he()</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
