@@ -45,8 +45,6 @@
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
-    
 
 
 
@@ -375,7 +373,7 @@
 </script>
 <script>
     
-      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 29) + '.jpg';
+      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 49) + '.jpg';
     
     $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
 
@@ -417,19 +415,28 @@
                 </a>
                 
                 
-                <a href="/categories/theme/" title="theme: 1">
+                <a href="/categories/themes/" title="themes: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">theme
+                            style="background-color: #D5F5E3;">themes
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/themes/" title="themes: 1">
+                <a href="/categories/theme/" title="theme: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">themes
+                            style="background-color: #E8F8F5;">theme
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E5%AE%89%E5%85%A8/" title="安全: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">安全
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -477,7 +484,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"-你好","max":2},{"name":"test","max":2},{"name":"theme","max":2},{"name":"themes","max":2}],
+            indicator: [{"name":"-你好","max":2},{"name":"test","max":2},{"name":"themes","max":2},{"name":"theme","max":2},{"name":"安全","max":2}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -488,7 +495,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [1,1,1,1],
+                    value : [1,1,1,1,1],
                     name : '文章分类数量'
                 }
             ]
