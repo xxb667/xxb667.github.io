@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Test2</title>
+      <link href="/2025/03/24/test2/"/>
+      <url>/2025/03/24/test2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="测试新文章"><a href="#测试新文章" class="headerlink" title="测试新文章"></a>测试新文章</h1><p>使用命令创建</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章名&quot;</span><br></pre></td></tr></table></figure><p>修改的是目录  &#x3D;&#x3D;blog-scaffolds&#x3D;&#x3D; 文件夹中的 &#x3D;&#x3D;post.md&#x3D;&#x3D; 文件中的配置信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">  - &#123;&#123;title&#125;&#125;</span><br><span class="line">categories:</span><br><span class="line">  - &#123;&#123;title&#125;&#125;</span><br><span class="line">author: xxb</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Test2 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Test2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>盲注</title>
       <link href="/2025/03/24/mang-zhu/"/>
       <url>/2025/03/24/mang-zhu/</url>
