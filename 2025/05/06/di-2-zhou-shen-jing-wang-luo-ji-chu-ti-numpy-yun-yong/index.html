@@ -1,0 +1,1336 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第2周 神经网络基础题numpy运用, xxb&#39;s blog">
+    <meta name="description" content="1.使用 Numpy 的 Python 基础知识1234import mathdef basic_sigmoid(x):    s = 1/(1+math.exp(-x))   #math.exp(x)：为e的x次方    print(s)">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第2周 神经网络基础题numpy运用 | xxb&#39;s blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/bitbug_favicon.ico">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo1.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">xxb&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo1.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">xxb&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第2周 神经网络基础题numpy运用</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AC%AC2%E5%91%A8-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">第2周 神经网络</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AC%AC2%E5%91%A8-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">第2周 深度学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AC%AC2%E5%91%A8-numpy%E8%BF%90%E7%94%A8/">
+                                <span class="chip bg-color">第2周 numpy运用</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%AC2%E5%91%A8-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E9%A2%98numpy%E8%BF%90%E7%94%A8/" class="post-category">
+                                第2周 神经网络基础题numpy运用
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-05-06
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-05-15
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-使用-Numpy-的-Python-基础知识"><a href="#1-使用-Numpy-的-Python-基础知识" class="headerlink" title="1.使用 Numpy 的 Python 基础知识"></a>1.使用 Numpy 的 Python 基础知识</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">basic_sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+math.exp(-x))   <span class="comment">#math.exp(x)：为e的x次方</span></span><br><span class="line">    <span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9525741268224334
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basic_sigmoid(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>0.9525741268224334
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="comment"># basic_sigmoid(a)  #会报错</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])  <span class="comment">#各种序列（如列表、元组等）转换为 NumPy 数组</span></span><br><span class="line"><span class="built_in">print</span>(x+<span class="number">3</span>)  </span><br></pre></td></tr></table></figure>
+
+<pre><code>[4 5 6]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(np.exp(x))   <span class="comment">#np.exp(x)：求的是e的x次方，可以是列表形式</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[ 2.71828183  7.3890561  20.08553692]
+</code></pre>
+<h2 id="1-1-使用-numpy-实现-sigmoid-函数。"><a href="#1-1-使用-numpy-实现-sigmoid-函数。" class="headerlink" title="1.1 使用 numpy 实现 sigmoid 函数。"></a>1.1 使用 numpy 实现 sigmoid 函数。</h2><p>x 现在可以是实数、向量或矩阵。我们在 numpy 中用来表示这些形状（向量、矩阵等）的数据结构称为 numpy 数组。您现在不需要了解更多信息。</p>
+<p>sigmoid函数：sigmoid(x)&#x3D;1&#x2F;(1+e^-x)<br>$$ \text{For } x \in \mathbb{R}^n \text{,     } sigmoid(x) &#x3D; sigmoid\begin{pmatrix}<br>    x_1  \<br>    x_2  \<br>    …  \<br>    x_n  \<br>\end{pmatrix} &#x3D; \begin{pmatrix}<br>    \frac{1}{1+e^{-x_1}}  \<br>    \frac{1}{1+e^{-x_2}}  \<br>    …  \<br>    \frac{1}{1+e^{-x_n}}  \<br>\end{pmatrix}\tag{1} $$</p>
+<p>np.array([1,2,3])  #各种序列（如列表、元组等）转换为 NumPy 数组</p>
+<p>np.exp(x)：求的是e的x次方，可以是列表形式</p>
+<h3 id="解题用的函数"><a href="#解题用的函数" class="headerlink" title="解题用的函数"></a>解题用的函数</h3><p>np.array([1,2,3])  #各种序列（如列表、元组等）转换为 NumPy 数组</p>
+<p>np.exp(x)：求的是e的x次方，可以是列表形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-x))</span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])  </span><br><span class="line">s = sigmoid(x)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.73105858 0.88079708 0.95257413]
+</code></pre>
+<h2 id="1-2-S-形梯度"><a href="#1-2-S-形梯度" class="headerlink" title="1.2 S 形梯度"></a>1.2 S 形梯度</h2><p>正如你在讲座中所看到的，你需要计算梯度以使用反向传播来优化损失函数。让我们编写您的第一个 gradient 函数。</p>
+<p>实现函数 sigmoid_grad（） 来计算 sigmoid 函数相对于其输入 x 的梯度。公式为：<br>$$sigmoid_derivative(x) &#x3D; \sigma’(x) &#x3D; \sigma(x) (1 - \sigma(x))\tag{2}$$<br>通常分两个步骤编写此函数的代码：</p>
+<ol>
+<li>将 s 设置为 x 的 sigmoid。您可能会发现 sigmoid（x） 函数很有用。</li>
+<li>计算 $\sigma’(x) &#x3D; s(1-s)$</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    s = sigmoid(x)  <span class="comment">#调用上面的sigmoid函数</span></span><br><span class="line">    ds = s*(<span class="number">1</span>-s)   </span><br><span class="line">    <span class="keyword">return</span> ds</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">f&quot;sigmoid_derivative(x) = &quot;</span> + <span class="built_in">str</span>(sigmoid_derivative(x)))</span><br></pre></td></tr></table></figure>
+
+<pre><code>sigmoid_derivative(x) = [0.19661193 0.10499359 0.04517666]
+</code></pre>
+<h2 id="1-3-重塑数组"><a href="#1-3-重塑数组" class="headerlink" title="1.3 - 重塑数组"></a>1.3 - 重塑数组</h2><p>深度学习中使用的两个常见 numpy 函数是 np.shape 和 np.reshape（）。</p>
+<p>np.shape 用于获取数组的形状，也就是数组各维度的大小。它返回一个元组，元组中的每个元素代表数组对应维度的大小。</p>
+<p><strong>np.reshape()</strong> 用于改变数组的形状，但不会改变数组中元素的数量和元素的值。它接收两个参数，第一个是要改变形状的数组，第二个是新的形状，用元组表示。</p>
+<p><strong>X.shape</strong> 用于获取矩阵&#x2F;向量 X 的形状（维度）。</p>
+<p><strong>X.reshape（…）</strong> 用于将 X 重塑为其他维度。</p>
+<p><strong>练习：</strong>实现接受形状为 （length， height， 3） 的输入并返回形状为 （length<em>height</em>3， 1） 的向量。<br>例如，如果您想将形状为 （a， b， c） 的数组 v 重塑为形状为 （a*b，c） 的向量，您可以这样做：image2vector()</p>
+<p>v &#x3D; v.reshape((v.shape[0]*v.shape[1], v.shape[2])) # v.shape[0] &#x3D; a ; v.shape[1] &#x3D; b ; v.shape[2] &#x3D; c</p>
+<p>请不要将 image 的 dimensions 硬编码为常量。相反，请使用 等查找您需要的数量。image.shape[0]</p>
+<h3 id="解题用到的numpy函数"><a href="#解题用到的numpy函数" class="headerlink" title="解题用到的numpy函数"></a>解题用到的numpy函数</h3><p><strong>np.shape</strong> 用于获取数组的形状，也就是数组各维度的大小。它返回一个元组，元组中的每个元素代表数组对应维度的大小。</p>
+<p><strong>np.reshape()</strong> 用于改变数组的形状，但不会改变数组中元素的数量和元素的值。它接收两个参数，第一个是要改变形状的数组，第二个是新的形状，用元组表示。</p>
+<p>若已经使用  a &#x3D; np.array()  :各种序列（如列表、元组等）转换为 NumPy 数组</p>
+<p>可直接使用a.shape()和a.reshape()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">image2vector</span>(<span class="params">image</span>):</span><br><span class="line">    <span class="comment"># 使用动态获取图像的各个维度</span></span><br><span class="line">    <span class="comment"># length = image.shape[0]</span></span><br><span class="line">    <span class="comment"># height = image.shape[1]</span></span><br><span class="line">    <span class="comment"># channels = image.shape[2]</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># # 计算新的形状</span></span><br><span class="line">    <span class="comment"># new_shape = (length * height * channels, 1)  #组成一个元组类型</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># # 将图像重塑为列向量</span></span><br><span class="line">    <span class="comment"># v = image.reshape(new_shape)  #对元组类型的维度进行重新塑造</span></span><br><span class="line">    <span class="comment"># v = np.shape(image)</span></span><br><span class="line">    v = image.reshape((image.shape[<span class="number">0</span>]*image.shape[<span class="number">1</span>]*image.shape[<span class="number">2</span>],<span class="number">1</span>))  <span class="comment">#image.shape 动态获取输入数组的各个维度</span></span><br><span class="line">    <span class="keyword">return</span> v</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">image = np.array([[[ <span class="number">0.67826139</span>,  <span class="number">0.29380381</span>],</span><br><span class="line">        [ <span class="number">0.90714982</span>,  <span class="number">0.52835647</span>],</span><br><span class="line">        [ <span class="number">0.4215251</span> ,  <span class="number">0.45017551</span>]],</span><br><span class="line"></span><br><span class="line">       [[ <span class="number">0.92814219</span>,  <span class="number">0.96677647</span>],</span><br><span class="line">        [ <span class="number">0.85304703</span>,  <span class="number">0.52351845</span>],</span><br><span class="line">        [ <span class="number">0.19981397</span>,  <span class="number">0.27417313</span>]],</span><br><span class="line"></span><br><span class="line">       [[ <span class="number">0.60659855</span>,  <span class="number">0.00533165</span>],</span><br><span class="line">        [ <span class="number">0.10820313</span>,  <span class="number">0.49978937</span>],</span><br><span class="line">        [ <span class="number">0.34144279</span>,  <span class="number">0.94630077</span>]]])</span><br><span class="line"><span class="comment"># print(image,type(image))</span></span><br><span class="line"><span class="comment"># v = image2vector(image)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;image2vector(image)=&quot;</span>+<span class="built_in">str</span>(image2vector(image)))</span><br><span class="line"><span class="comment"># print(v.shape)</span></span><br><span class="line"><span class="comment"># print(image.shape[0])</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>image2vector(image)=[[0.67826139]
+ [0.29380381]
+ [0.90714982]
+ [0.52835647]
+ [0.4215251 ]
+ [0.45017551]
+ [0.92814219]
+ [0.96677647]
+ [0.85304703]
+ [0.52351845]
+ [0.19981397]
+ [0.27417313]
+ [0.60659855]
+ [0.00533165]
+ [0.10820313]
+ [0.49978937]
+ [0.34144279]
+ [0.94630077]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = np.random.rand(<span class="number">5</span>, <span class="number">5</span>, <span class="number">3</span>)   <span class="comment">#随机生成三维数组</span></span><br><span class="line"><span class="built_in">print</span>(image,<span class="built_in">type</span>(image))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[[0.24987486 0.85458332 0.39427962]
+  [0.84700883 0.80261149 0.67827139]
+  [0.50189242 0.97494552 0.21174211]
+  [0.29653918 0.04037584 0.36421942]
+  [0.22754314 0.78031512 0.5792323 ]]
+
+ [[0.84213381 0.67844461 0.490335  ]
+  [0.00748399 0.700573   0.26996999]
+  [0.13355395 0.96510904 0.0115554 ]
+  [0.7618202  0.55218258 0.92220161]
+  [0.39442553 0.3157387  0.59986778]]
+
+ [[0.7390022  0.68959494 0.76984036]
+  [0.31442081 0.14743378 0.22144336]
+  [0.25154061 0.30938835 0.4364773 ]
+  [0.57657224 0.64162257 0.37775498]
+  [0.19523348 0.00456079 0.31074704]]
+
+ [[0.21233574 0.10074275 0.86020969]
+  [0.42523492 0.18896698 0.58298956]
+  [0.21843096 0.76314584 0.04964143]
+  [0.19708626 0.93293973 0.99975001]
+  [0.71430935 0.22718415 0.27839391]]
+
+ [[0.9678347  0.21361153 0.60654814]
+  [0.3955639  0.94836807 0.34534538]
+  [0.30469452 0.19154872 0.36165117]
+  [0.85420721 0.95052128 0.62689458]
+  [0.75893816 0.9162334  0.74103706]]] &lt;class &#39;numpy.ndarray&#39;&gt;
+</code></pre>
+<h2 id="1-4-规范化行"><a href="#1-4-规范化行" class="headerlink" title="1.4 - 规范化行"></a>1.4 - 规范化行</h2><p>我们在机器学习和深度学习中使用的另一种常见技术是规范化我们的数据。它通常会带来更好的性能，因为梯度下降在归一化后收敛得更快。在这里，归一化是指将 x 更改为$ \frac{x}{| x|} $（将 x 的每个行向量除以其范数）</p>
+<p><strong>np.linalg.norm</strong> 是 NumPy 库中用于计算向量或矩阵范数的函数。在 <strong>np.linalg.norm(x, axis &#x3D; 1, keepdims &#x3D; True)</strong> 中：</p>
+<p><strong>x：</strong>表示要计算范数的数组，可以是一维、二维或更高维的数组。</p>
+<p><strong>axis &#x3D; 1：</strong>指定按行计算范数。对于二维数组，它会对每一行的元素进行范数计算。如果 x 是一维数组，此参数不适用；如果 x 是三维及以上数组，它会沿着第二个维度进行计算。</p>
+<p><strong>keepdims &#x3D; True：</strong>表示保持结果的维度与原数组一致。计算完成后，结果数组的维度不会因为计算范数而减少。</p>
+<p>例如，如果</p>
+<p>$$x &#x3D;<br>\begin{bmatrix}<br>    0 &amp; 3 &amp; 4 \<br>    2 &amp; 6 &amp; 4 \<br>\end{bmatrix}\tag{3}$$ then $$| x| &#x3D; np.linalg.norm(x, axis &#x3D; 1, keepdims &#x3D; True) &#x3D; \begin{bmatrix}<br>    5 \<br>    \sqrt{56} \<br>\end{bmatrix}\tag{4} $$and        $$ x_normalized &#x3D; \frac{x}{| x|} &#x3D; \begin{bmatrix}<br>    0 &amp; \frac{3}{5} &amp; \frac{4}{5} \<br>    \frac{2}{\sqrt{56}} &amp; \frac{6}{\sqrt{56}} &amp; \frac{4}{\sqrt{56}} \<br>\end{bmatrix}\tag{5}$$<br>请注意，你可以划分不同大小的矩阵，而且效果很好：这称为广播，你将在 第 5 部分 中学习它。</p>
+<p><strong>练习</strong>：实现 normalizeRows（） 以规范化矩阵的行。将此函数应用于输入矩阵 x 后，x 的每一行都应该是一个单位长度的向量（即长度 1）。</p>
+<h3 id="解题用的numpy函数"><a href="#解题用的numpy函数" class="headerlink" title="解题用的numpy函数"></a>解题用的numpy函数</h3><p><strong>np.linalg.norm(x,axis&#x3D;1,keepdims&#x3D;True)</strong></p>
+<p><strong>x：</strong>表示要计算范数的数组，可以是一维、二维或更高维的数组。</p>
+<p><strong>axis &#x3D; 1：</strong>指定按行计算范数。对于二维数组，它会对每一行的元素进行范数计算。如果 x 是一维数组，此参数不适用；如果 x 是三维及以上数组，它会沿着第二个维度进行计算。</p>
+<p><strong>keepdims &#x3D; True：</strong>表示保持结果的维度与原数组一致。计算完成后，结果数组的维度不会因为计算范数而减少。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">normalizeRows</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment">#     x：表示要计算范数的数组，可以是一维、二维或更高维的数组。</span></span><br><span class="line">    <span class="comment"># axis = 1：指定按行计算范数。对于二维数组，它会对每一行的元素进行范数计算。如果 x 是一维数组，此参数不适用；如果 x 是三维及以上数组，它会沿着第二个维度进行计算。</span></span><br><span class="line">    <span class="comment"># keepdims = True：表示保持结果的维度与原数组一致。计算完成后，结果数组的维度不会因为计算范数而减少。</span></span><br><span class="line">    x1 = np.linalg.norm(x,axis=<span class="number">1</span>,keepdims=<span class="literal">True</span>)</span><br><span class="line">    x = x/x1    </span><br><span class="line">    <span class="keyword">return</span> x    </span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([[<span class="number">0</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">              [<span class="number">1</span>,<span class="number">6</span>,<span class="number">4</span>]])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;normalizeRows(x)=&quot;</span>+<span class="built_in">str</span>(normalizeRows(x)))</span><br></pre></td></tr></table></figure>
+
+<pre><code>normalizeRows(x)=[[0.         0.6        0.8       ]
+ [0.13736056 0.82416338 0.54944226]]
+</code></pre>
+<h2 id="1-5-广播和-softmax-函数"><a href="#1-5-广播和-softmax-函数" class="headerlink" title="1.5 - 广播和 softmax 函数"></a>1.5 - 广播和 softmax 函数</h2><p>在 numpy 中需要理解的一个非常重要的概念是 “广播”。它对于在不同形状的数组之间执行数学运算非常有用。有关广播的完整详细信息，您可以阅读官方广播文档。<a target="_blank" rel="noopener" href="http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html">广播文档</a>.</p>
+<p>练习：使用 numpy 实现 softmax 函数。您可以将 softmax 视为一个归一化函数，当您的算法需要对两个或多个类进行分类时使用。您将在本专业的第二门课程中了解有关 softmax 的更多信息</p>
+<p>做法：</p>
+<p>$ \text{for } x \in \mathbb{R}^{1\times n} \text{,     } softmax(x) &#x3D; softmax(\begin{bmatrix}<br>x_1  &amp;&amp;<br>x_2 &amp;&amp;<br>…  &amp;&amp;<br>x_n<br>\end{bmatrix}) &#x3D; \begin{bmatrix}<br> \frac{e^{x_1}}{\sum_{j}e^{x_j}}  &amp;&amp;<br>\frac{e^{x_2}}{\sum_{j}e^{x_j}}  &amp;&amp;<br>…  &amp;&amp;<br>\frac{e^{x_n}}{\sum_{j}e^{x_j}}<br>\end{bmatrix} $ </p>
+<p>$\text{for a matrix } x \in \mathbb{R}^{m \times n} \text{,  $x_{ij}$ maps to the element in the $i^{th}$ row and $j^{th}$ column of $x$, thus we have: }$  $$softmax(x) &#x3D; softmax\begin{bmatrix}<br>x_{11} &amp; x_{12} &amp; x_{13} &amp; \dots  &amp; x_{1n} \<br>x_{21} &amp; x_{22} &amp; x_{23} &amp; \dots  &amp; x_{2n} \<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>x_{m1} &amp; x_{m2} &amp; x_{m3} &amp; \dots  &amp; x_{mn}<br>\end{bmatrix} &#x3D; \begin{bmatrix}<br>\frac{e^{x_{11}}}{\sum_{j}e^{x_{1j}}} &amp; \frac{e^{x_{12}}}{\sum_{j}e^{x_{1j}}} &amp; \frac{e^{x_{13}}}{\sum_{j}e^{x_{1j}}} &amp; \dots  &amp; \frac{e^{x_{1n}}}{\sum_{j}e^{x_{1j}}} \<br>\frac{e^{x_{21}}}{\sum_{j}e^{x_{2j}}} &amp; \frac{e^{x_{22}}}{\sum_{j}e^{x_{2j}}} &amp; \frac{e^{x_{23}}}{\sum_{j}e^{x_{2j}}} &amp; \dots  &amp; \frac{e^{x_{2n}}}{\sum_{j}e^{x_{2j}}} \<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>\frac{e^{x_{m1}}}{\sum_{j}e^{x_{mj}}} &amp; \frac{e^{x_{m2}}}{\sum_{j}e^{x_{mj}}} &amp; \frac{e^{x_{m3}}}{\sum_{j}e^{x_{mj}}} &amp; \dots  &amp; \frac{e^{x_{mn}}}{\sum_{j}e^{x_{mj}}}<br>\end{bmatrix} &#x3D; \begin{pmatrix}<br>softmax\text{(first row of x)}  \<br>softmax\text{(second row of x)} \<br>…  \<br>softmax\text{(last row of x)} \<br>\end{pmatrix} $$</p>
+<h3 id="解题用的numpy函数-1"><a href="#解题用的numpy函数-1" class="headerlink" title="解题用的numpy函数"></a>解题用的numpy函数</h3><p><strong>np.exp(x)：</strong>计算 e^x次方</p>
+<p><strong>np.sum(a,axis&#x3D;1,keepdims&#x3D;True)</strong>   #求出矩阵中每行的和</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">    a = np.exp(x)  <span class="comment">#计算 e^x次方</span></span><br><span class="line">    sum1 = np.<span class="built_in">sum</span>(a,axis=<span class="number">1</span>,keepdims=<span class="literal">True</span>)   <span class="comment">#求出矩阵中每行的和</span></span><br><span class="line">    s = a/sum1   <span class="comment">#求出softmax(x)的值</span></span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import numpy as np</span></span><br><span class="line">x = np.array([</span><br><span class="line">    [<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">7</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;softmax(x)=&quot;</span>+<span class="built_in">str</span>(softmax(x)))</span><br></pre></td></tr></table></figure>
+
+<pre><code>softmax(x)=[[9.80897665e-01 8.94462891e-04 1.79657674e-02 1.21052389e-04
+  1.21052389e-04]
+ [8.78679856e-01 1.18916387e-01 8.01252314e-04 8.01252314e-04
+  8.01252314e-04]]
+</code></pre>
+<h1 id="2-矢量化"><a href="#2-矢量化" class="headerlink" title="2 矢量化"></a>2 矢量化</h1><p>在深度学习中，您需要处理非常大的数据集。因此，非计算最优函数可能会成为算法中的巨大瓶颈，并可能导致模型需要很长时间才能运行。为了确保您的代码在计算上是高效的，您将使用矢量化。例如，尝试区分 dot&#x2F;outer&#x2F;elementwise 产品的以下实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x1 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">x2 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### CLASSIC DOT PRODUCT OF VECTORS IMPLEMENTATION ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">dot = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x1)):</span><br><span class="line">    dot+= x1[i]*x2[i]</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;dot = &quot;</span> + <span class="built_in">str</span>(dot) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### CLASSIC OUTER PRODUCT IMPLEMENTATION ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">outer = np.zeros((<span class="built_in">len</span>(x1),<span class="built_in">len</span>(x2))) <span class="comment"># we create a len(x1)*len(x2) matrix with only zeros</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x1)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x2)):</span><br><span class="line">        outer[i,j] = x1[i]*x2[j]</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;outer = &quot;</span> + <span class="built_in">str</span>(outer) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### CLASSIC ELEMENTWISE IMPLEMENTATION ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">mul = np.zeros(<span class="built_in">len</span>(x1))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x1)):</span><br><span class="line">    mul[i] = x1[i]*x2[i]</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;elementwise multiplication = &quot;</span> + <span class="built_in">str</span>(mul) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### CLASSIC GENERAL DOT PRODUCT IMPLEMENTATION ###</span></span><br><span class="line">W = np.random.rand(<span class="number">3</span>,<span class="built_in">len</span>(x1)) <span class="comment"># Random 3*len(x1) numpy array</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">gdot = np.zeros(W.shape[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(W.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x1)):</span><br><span class="line">        gdot[i] += W[i,j]*x1[j]</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;gdot = &quot;</span> + <span class="built_in">str</span>(gdot) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>dot = 278
+ ----- Computation time = 0.0ms
+outer = [[81. 18. 18. 81.  0. 81. 18. 45.  0.  0. 81. 18. 45.  0.  0.]
+ [18.  4.  4. 18.  0. 18.  4. 10.  0.  0. 18.  4. 10.  0.  0.]
+ [45. 10. 10. 45.  0. 45. 10. 25.  0.  0. 45. 10. 25.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [63. 14. 14. 63.  0. 63. 14. 35.  0.  0. 63. 14. 35.  0.  0.]
+ [45. 10. 10. 45.  0. 45. 10. 25.  0.  0. 45. 10. 25.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [81. 18. 18. 81.  0. 81. 18. 45.  0.  0. 81. 18. 45.  0.  0.]
+ [18.  4.  4. 18.  0. 18.  4. 10.  0.  0. 18.  4. 10.  0.  0.]
+ [45. 10. 10. 45.  0. 45. 10. 25.  0.  0. 45. 10. 25.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]]
+ ----- Computation time = 0.0ms
+elementwise multiplication = [81.  4. 10.  0.  0. 63. 10.  0.  0.  0. 81.  4. 25.  0.  0.]
+ ----- Computation time = 0.0ms
+gdot = [26.61942854 25.12220808 22.33046868]
+ ----- Computation time = 0.0ms
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">x1 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">x2 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### VECTORIZED DOT PRODUCT OF VECTORS ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">dot = np.dot(x1,x2)</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;dot = &quot;</span> + <span class="built_in">str</span>(dot) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### VECTORIZED OUTER PRODUCT ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">outer = np.outer(x1,x2)</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;outer = &quot;</span> + <span class="built_in">str</span>(outer) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### VECTORIZED ELEMENTWISE MULTIPLICATION ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">mul = np.multiply(x1,x2)</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;elementwise multiplication = &quot;</span> + <span class="built_in">str</span>(mul) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### VECTORIZED GENERAL DOT PRODUCT ###</span></span><br><span class="line">tic = time.process_time()</span><br><span class="line">dot = np.dot(W,x1)</span><br><span class="line">toc = time.process_time()</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;gdot = &quot;</span> + <span class="built_in">str</span>(dot) + <span class="string">&quot;\n ----- Computation time = &quot;</span> + <span class="built_in">str</span>(<span class="number">1000</span>*(toc - tic)) + <span class="string">&quot;ms&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>dot = 278
+ ----- Computation time = 0.0ms
+outer = [[81 18 18 81  0 81 18 45  0  0 81 18 45  0  0]
+ [18  4  4 18  0 18  4 10  0  0 18  4 10  0  0]
+ [45 10 10 45  0 45 10 25  0  0 45 10 25  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [63 14 14 63  0 63 14 35  0  0 63 14 35  0  0]
+ [45 10 10 45  0 45 10 25  0  0 45 10 25  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [81 18 18 81  0 81 18 45  0  0 81 18 45  0  0]
+ [18  4  4 18  0 18  4 10  0  0 18  4 10  0  0]
+ [45 10 10 45  0 45 10 25  0  0 45 10 25  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]]
+ ----- Computation time = 0.0ms
+elementwise multiplication = [81  4 10  0  0 63 10  0  0  0 81  4 25  0  0]
+ ----- Computation time = 0.0ms
+gdot = [26.61942854 25.12220808 22.33046868]
+ ----- Computation time = 0.0ms
+</code></pre>
+<p>您可能已经注意到，矢量化实现更加简洁和高效。对于较大的向量&#x2F;矩阵，运行时间的差异会变得更大。</p>
+<p>请注意，执行矩阵-矩阵或矩阵-向量乘法。这与 和 运算符（相当于 Matlab&#x2F;Octave 中的运算符）不同，后者执行元素乘法。np.dot()  np.multiply()<em>.</em></p>
+<h2 id="2-1-实现-L1-和-L2-损失函数"><a href="#2-1-实现-L1-和-L2-损失函数" class="headerlink" title="2.1 实现 L1 和 L2 损失函数"></a>2.1 实现 L1 和 L2 损失函数</h2><p><strong>练习：</strong> 实现 L1 损失的 numpy 矢量化版本。您可能会发现函数 abs（x） （x 的绝对值） 很有用。</p>
+<p><strong>温馨提示：</strong> 损失用于评估模型的性能。您的损失越大，您的预测差异就越大 ($ \hat{y} $)<br> 来自 true 值($y$)在深度学习中，您可以使用 Gradient Descent 等优化算法来训练模型并最大限度地降低成本。</p>
+<p>L1 损失定义为：<br>$$\begin{align*} &amp; L_1(\hat{y}, y) &#x3D; \sum_{i&#x3D;0}^m|y^{(i)} - \hat{y}^{(i)}| \end{align*}\tag{6}$$</p>
+<h3 id="解题用的numpy函数-2"><a href="#解题用的numpy函数-2" class="headerlink" title="解题用的numpy函数"></a>解题用的numpy函数</h3><p><strong>np.dot()</strong> 用于计算两个数组的点积。点积的具体计算方式根据输入数组的维度不同而有所差异：</p>
+<p>对于一维数组，它计算的是两个数组对应元素乘积的和，即向量的内积。</p>
+<p>对于二维数组，它执行的是矩阵乘法。</p>
+<p>对于更高维的数组，np.dot() 的行为遵循特定的规则，但通常用于处理多维数组的点积计算。</p>
+<p><strong>np.outer()</strong> 用于计算两个一维数组的外积。外积的结果是一个二维数组，其形状为 (len(a), len(b))，其中 a 和 b 是输入的一维数组。外积的计算方式是将第一个数组的每个元素与第二个数组的每个元素相乘。</p>
+<p><strong>np.multiply()</strong> 用于对两个数组进行逐元素相乘。这意味着它会将两个数组中对应位置的元素相乘，并返回一个与输入数组形状相同的新数组。两个输入数组的形状必须相同，或者可以通过广播机制进行匹配。</p>
+<p>**np.sum(x)**：计算x的和</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">L1</span>(<span class="params">yhat,y</span>):</span><br><span class="line">    <span class="comment"># #基础解法</span></span><br><span class="line">    <span class="comment"># loss = 0</span></span><br><span class="line">    <span class="comment"># for i in range(len(y)):</span></span><br><span class="line">    <span class="comment">#     loss += abs(yhat[i]-y[i])</span></span><br><span class="line"></span><br><span class="line">     <span class="comment"># 计算差值的绝对值</span></span><br><span class="line">    diff_abs = np.<span class="built_in">abs</span>(y - yhat)</span><br><span class="line">    <span class="comment"># 对所有元素求和</span></span><br><span class="line">    loss = np.<span class="built_in">sum</span>(diff_abs)</span><br><span class="line">    <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yhat = np.array([<span class="number">.9</span>, <span class="number">0.2</span>, <span class="number">0.1</span>, <span class="number">.4</span>, <span class="number">.9</span>])</span><br><span class="line">y = np.array([<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(yhat)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;L1 = &quot;</span> + <span class="built_in">str</span>(L1(yhat,y)))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.9 0.2 0.1 0.4 0.9]
+[1 0 0 1 1]
+L1 = 1.1
+</code></pre>
+<p><strong>练习：</strong></p>
+<p>实现 L2 损失的 numpy 矢量化版本。有几种方法可以实现 L2 损失，但您可能会发现函数 np.dot（） 很有用。提醒一下，如果$x &#x3D; [x_1, x_2, …, x_n]$<br> 然后<code>np.dot(x,x)</code> &#x3D; $\sum_{j&#x3D;0}^n x_j^{2}$.<br>L2 损失定义为$$\begin{align*} &amp; L_2(\hat{y},y) &#x3D; \sum_{i&#x3D;0}^m(y^{(i)} - \hat{y}^{(i)})^2 \end{align*}\tag{7}$$</p>
+<h3 id="解题用的numpy函数-3"><a href="#解题用的numpy函数-3" class="headerlink" title="解题用的numpy函数"></a>解题用的numpy函数</h3><p><strong>np.multiply()</strong> 用于对两个数组进行逐元素相乘。这意味着它会将两个数组中对应位置的元素相乘，并返回一个与输入数组形状相同的新数组。两个输入数组的形状必须相同，或者可以通过广播机制进行匹配。</p>
+<p>**np.sum(x)**： 会计算数组 x 中所有元素的总和。如果 x 是多维数组，它会将数组中的所有元素累加起来得到一个标量值。</p>
+<p><strong>语法</strong> ：<strong>np.sum(x, axis&#x3D;None, dtype&#x3D;None, out&#x3D;None, keepdims&#x3D;np._NoValue)</strong></p>
+<p><strong>x</strong> 这是必需的参数，表示要进行求和操作的数组。</p>
+<p><strong>axis</strong> 该参数是可选的，用于指定沿着哪个轴进行求和。如果 axis 为 None（默认值），则会对数组中的所有元素进行求和；如果 axis 是一个整数，则会沿着指定的轴进行求和。</p>
+<p><strong>dtype</strong>：可选参数，用于指定返回结果的数据类型。</p>
+<p><strong>out</strong>：可选参数，用于指定存储结果的数组。</p>
+<p><strong>keepdims</strong>：可选参数，用于指定是否保持结果的维度与原数组一致。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">L2</span>(<span class="params">yhat,y</span>):</span><br><span class="line">    <span class="comment"># #基础解法</span></span><br><span class="line">    <span class="comment"># loss = 0</span></span><br><span class="line">    <span class="comment"># for i in range(len(y)):</span></span><br><span class="line">    <span class="comment">#     loss += (yhat[i]-y[i])*(yhat[i]-y[i])</span></span><br><span class="line">    a = np.multiply(y-yhat,y-yhat)   <span class="comment">#数组中每行元素依次相乘</span></span><br><span class="line">    loss = np.<span class="built_in">sum</span>(a)  <span class="comment">#计算数组行列总和</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yhat = np.array([<span class="number">.9</span>, <span class="number">0.2</span>, <span class="number">0.1</span>, <span class="number">.4</span>, <span class="number">.9</span>])</span><br><span class="line">y = np.array([<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;L2 = &quot;</span> + <span class="built_in">str</span>(L2(yhat,y)))</span><br></pre></td></tr></table></figure>
+
+<pre><code>L2 = 0.43
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">小西贝</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://xxb667.github.io/2025/05/06/di-2-zhou-shen-jing-wang-luo-ji-chu-ti-numpy-yun-yong/">http://xxb667.github.io/2025/05/06/di-2-zhou-shen-jing-wang-luo-ji-chu-ti-numpy-yun-yong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">小西贝</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%AC%AC2%E5%91%A8-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">第2周 神经网络</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AC%AC2%E5%91%A8-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">第2周 深度学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AC%AC2%E5%91%A8-numpy%E8%BF%90%E7%94%A8/">
+                                    <span class="chip bg-color">第2周 numpy运用</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025/05/27/docisfy-shi-yong-pei-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Docisfy使用配置">
+                        
+                        <span class="card-title">Docisfy使用配置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-05-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Docisfy%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    Docisfy使用配置
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Docisfy%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">
+                        <span class="chip bg-color">Docisfy使用配置</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/04/30/bo-ke-yuan-zhu-ti-pei-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="博客园主题配置">
+                        
+                        <span class="card-title">博客园主题配置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    博客园主题配置
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/">
+                        <span class="chip bg-color">博客园主题配置</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: xxb&#39;s blog<br />'
+            + '文章作者: 小西贝<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2025</span>
+            
+            <a href="/about" target="_blank">小西贝</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2025";
+                        var startMonth = "3";
+                        var startDate = "22";
+                        var startHour = "22";
+                        var startMinute = "50";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"> 
+    <a href="https://github.com/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+<!-- 
+
+
+    <a href="/#" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: /#" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+ --> 
+
+<!-- 
+    <a href="/#" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: /#" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+ -->
+
+<!-- 
+
+ -->
+
+<!--  -->
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
